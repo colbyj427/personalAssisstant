@@ -1,0 +1,5 @@
+.venv/
+.oldPy/
+src/input/whisper/whisper.cpp/models/
+src/Agents/models/
+src/input/whisper/whisper.cpp/
