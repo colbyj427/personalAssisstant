@@ -7,13 +7,13 @@ RUNNING = True
 # wake_word="./src/input/whisper/wakeWords/Shakira_en_mac_v4_0_0/Shakira_en_mac_v4_0_0.ppn"
 # wake_word="./src/input/whisper/wakeWords/Shakira_en_raspberry-pi_v4_0_0/Shaqira_en_raspberry-pi_v4_0_0.ppn"
 # wake_word="porcupine"  # built-in keyword
-def listen_for_wake_word(wake_word="./src/input/whisper/wakeWords/Shakira_en_mac_v4_0_0/Shakira_en_mac_v4_0_0.ppn", access_key="+KUkPFsG1naLMZ+N9fJICz4kNJbb0pjP7iKMJQNvg4NmpsMcENuRQQ=="):
+def listen_for_wake_word(wake_word="porcupine", access_key="+KUkPFsG1naLMZ+N9fJICz4kNJbb0pjP7iKMJQNvg4NmpsMcENuRQQ=="):
     global RUNNING
     RUNNING = True
     porcupine = pvporcupine.create(
         access_key=access_key,
-        # keywords=[wake_word]
-        keyword_paths=[wake_word]
+        keywords=[wake_word]
+        # keyword_paths=[wake_word]
     )
 
     def audio_callback(indata, frames, time, status):
