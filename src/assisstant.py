@@ -2,6 +2,7 @@ import subprocess
 import time
 import signal
 import sys
+from Agents.gemma import GemmaAgent
 from input.whisper.wakeWord import listen_for_wake_word
 from input.whisper.micMonitoring import WhisperStreamer
 from output.audio import play_chime
@@ -73,7 +74,7 @@ whisper = WhisperStreamer()
 def runWhisper():
     whisper.start()
     start_time = time.time()
-    timeout_seconds = 8  # stop after 10 seconds of streaming
+    timeout_seconds = 5  # stop after 10 seconds of streaming
 
     while time.time() - start_time < timeout_seconds:
         text = whisper.get_transcription(timeout=1)
@@ -110,7 +111,11 @@ def main():
     print("[INFO] Assistant started")
 
     try:
+        # 0. Initialize LLM
+        gemma = GemmaAgent()
+        
         while RUNNING:
+
             # 1. Wait for wake word
             listen_for_wake_word()
             
@@ -119,16 +124,16 @@ def main():
 
             #4. Run whisper
             runWhisper()
+            text = "PLACEHOLDER"
 
             # 4. Whisper cooldown
             time.sleep(WHISPER_COOLDOWN)
 
             # 5. Send to LLM
-            print("[INFO] (LLM interaction would go here)")
+            response = gemma.generate("User said: just tell a joke" + text)
 
             # 6. Respond via TTS
-            print("[INFO] (TTS response would go here)")
-            play_chime()
+            print("TTS Response:", response)
             play_chime()
 
     finally:
