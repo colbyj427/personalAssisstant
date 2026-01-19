@@ -3,3 +3,6 @@
 src/input/whisper/whisper.cpp/models/
 src/Agents/models/
 src/input/whisper/whisper.cpp/
+src/input/whisper/wakeWords/
+.DS_Store
+__pycache__/
