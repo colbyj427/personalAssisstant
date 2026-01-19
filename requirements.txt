@@ -1,0 +1,6 @@
+transformers
+torch
+accelerate
+pvporcupine
+sounddevice
+numpy
