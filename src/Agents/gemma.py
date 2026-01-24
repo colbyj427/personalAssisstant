@@ -24,9 +24,9 @@ class GemmaAgent:
         return outputs[0]["generated_text"][-1]["content"]
 
 # Usage
-agent = GemmaAgent()  # Load once (10 seconds)
+# agent = GemmaAgent()  # Load once (10 seconds)
 
 # Now these are fast (1-5 seconds each)
-response1 = agent.generate("Hello!")
-response2 = agent.generate("What's 2+2?")
-response3 = agent.generate("Tell me a joke")
+# response1 = agent.generate("Hello!")
+# response2 = agent.generate("What's 2+2?")
+# response3 = agent.generate("Tell me a joke")
