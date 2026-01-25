@@ -1,4 +1,4 @@
-.venv/
+venv/
 .oldPy/
 .avenv/
 src/input/whisper/whisper.cpp/models/
