@@ -74,7 +74,7 @@ whisper = WhisperStreamer()
 def runWhisper():
     whisper.start()
     start_time = time.time()
-    timeout_seconds = 5  # stop after 10 seconds of streaming
+    timeout_seconds = 5  # stop after timeout_seconds seconds of streaming
 
     while time.time() - start_time < timeout_seconds:
         text = whisper.get_transcription(timeout=1)

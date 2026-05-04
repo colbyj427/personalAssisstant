@@ -35,3 +35,8 @@ https://github.com/ggerganov/whisper.cpp
 ### Wake Word
 
 Wake word trainings should be placed in src/input/whisper/wakeWords
+
+### Running the Application
+
+- From the personalAssisstant directory, run: python3 ./src/assisstant.py
+
