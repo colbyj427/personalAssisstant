@@ -84,7 +84,7 @@ def main():
         if dummy_wake_word_detector():
             streamer.start()
             start_time = time.time()
-            timeout_seconds = 20  # stop after 10 seconds of streaming
+            timeout_seconds = 10  # stop after # seconds of streaming
 
             while time.time() - start_time < timeout_seconds:
                 text = streamer.get_transcription(timeout=1)

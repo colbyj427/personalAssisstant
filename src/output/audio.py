@@ -16,3 +16,5 @@ def play_chime(path="./src/output/sounds/chime.wav"):
             subprocess.Popen(["aplay", path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     except Exception as e:
         print(f"[WARN] Failed to play chime: {e}")
+
+play_chime()

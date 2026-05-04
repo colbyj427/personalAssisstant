@@ -37,29 +37,53 @@
 
 
 
-# gemma_simple.py
+# this worked on the mac
+# import torch
+# from transformers import pipeline
+
+# # Auto-detect device
+# device = "mps" if torch.backends.mps.is_available() else "cpu"
+
+# # Load from local path
+# pipe = pipeline(
+#     "text-generation",
+#     model="./src/Agents/models/gemma-2-2b-it",
+#     model_kwargs={"torch_dtype": torch.float16 if device == "mps" else torch.float32},
+#     device=device
+# )
+
+# # Prompt
+# messages = [
+#     {"role": "user", "content": "What is machine learning?"}
+# ]
+
+# # Generate
+# print("Generating response...\n")
+# outputs = pipe(messages, max_new_tokens=200)
+# response = outputs[0]["generated_text"][-1]["content"]
+
+# print(response)
+
+
+# chat gpt on a pi5
 import torch
 from transformers import pipeline
 
-# Auto-detect device
-device = "mps" if torch.backends.mps.is_available() else "cpu"
-
-# Load from local path
 pipe = pipeline(
     "text-generation",
-    model="./src/Agents/models/gemma-2-2b-it",
-    model_kwargs={"torch_dtype": torch.float16 if device == "mps" else torch.float32},
-    device=device
+    # model="./src/Agents/models/gemma-2-2b-it",
+    model="./src/Agents/models/tinyllama",
+    device=-1,  # CPU
+    model_kwargs={"torch_dtype": torch.float32}
 )
 
-# Prompt
-messages = [
-    {"role": "user", "content": "What is machine learning?"}
-]
+prompt = "Tell a joke"
 
-# Generate
-print("Generating response...\n")
-outputs = pipe(messages, max_new_tokens=200)
-response = outputs[0]["generated_text"][-1]["content"]
+outputs = pipe(
+    prompt,
+    max_new_tokens=200,
+    do_sample=True,
+    temperature=0.7
+)
 
-print(response)
+print(outputs[0]["generated_text"])

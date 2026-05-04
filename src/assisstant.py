@@ -112,7 +112,7 @@ def main():
 
     try:
         # 0. Initialize LLM
-        gemma = GemmaAgent()
+        # gemma = GemmaAgent()
         
         while RUNNING:
 
@@ -130,11 +130,14 @@ def main():
             time.sleep(WHISPER_COOLDOWN)
 
             # 5. Send to LLM
-            response = gemma.generate("User said: just tell a joke" + text)
+            # response = gemma.generate("User said: just tell a joke" + text)
 
             # 6. Respond via TTS
-            print("TTS Response:", response)
-            play_chime()
+            # print("TTS Response:", response)
+            text = "I did that thing you wanted."
+            subprocess.run(['espeak', text])
+
+            # play_chime()
 
     finally:
         print("[INFO] Cleaning up resources...")
